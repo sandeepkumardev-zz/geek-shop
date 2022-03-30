@@ -18,6 +18,7 @@
   display: flex;
   align-items: center;
   color: var(--text-white);
+  cursor: pointer;
 
   h5 {
     font-family: "Cute Font", cursive;
@@ -66,10 +67,15 @@
 
   .GuiBadge-root {
     margin: 0.8rem 0.8rem 0 0.8rem;
+    cursor: pointer;
   }
 
   button {
     font-weight: bold;
+
+    &:hover {
+      color: var(--text-white) !important;
+    }
   }
 }
 
