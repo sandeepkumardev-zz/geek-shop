@@ -9,7 +9,7 @@ function AppBar() {
 
   return (
     <div className="GuiAppbar">
-      <div className="GuiAppbar__container">
+      <div className="GuiAppbar__container GuiContainer">
         <div className="GuiAppbar__brand">
           <Typography variant="h5">Geek-Shop</Typography>
         </div>
