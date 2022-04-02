@@ -1,4 +1,7 @@
+import { Typography } from "geeky-ui";
 import React from "react";
+import Filters from "./Filters";
+import MobieViewFilters from "./MobieViewFilters";
 import "./product-page.scss";
 import ProductCard from "./ProductCard";
 
@@ -18,10 +21,18 @@ function ProductPage() {
     <div className="GsContainer">
       <div className="GsProductPage">
         <div id="GsFilters" className="GsProductPage__filters">
-          Filters
+          <Filters />
         </div>
-        <div id="GsProducts" className="GsProductPage__products">
-          <div className="GsProducts__filtersList">Filter List</div>
+
+        <div id="GsProducts">
+          <div className="GsProducts__header">
+            <Typography variant="subtitle1">
+              {products?.length} results
+            </Typography>
+
+            {/* shows featured filter and mobile-view filters  */}
+            <MobieViewFilters />
+          </div>
           <div className="GsProducts__productsList">
             {products?.map((product) => (
               <ProductCard product={product} key={product.id} />
