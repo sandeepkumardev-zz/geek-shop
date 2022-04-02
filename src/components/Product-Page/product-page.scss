@@ -1,0 +1,27 @@
+.GsProductPage {
+  display: grid;
+  grid-template-columns: 260px 1fr;
+  grid-template-rows: auto;
+  grid-template-areas: "filters products";
+
+  min-height: calc(100vh - 5.65rem);
+}
+
+#GsFilters {
+  grid-area: filters;
+}
+#GsProducts {
+  grid-area: products;
+}
+
+.GsProducts__filterList {
+  position: sticky;
+  top: 0;
+}
+
+.GsProducts__productsList {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  grid-gap: 1rem;
+  padding: 1rem;
+}
