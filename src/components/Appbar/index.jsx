@@ -3,9 +3,12 @@ import Typography from "geeky-ui/core/Typography";
 import Button from "geeky-ui/core/Button";
 import Badge from "geeky-ui/core/Badge";
 import "./appbar.scss";
+import IconButton from "geeky-ui/core/IconButton";
+import { useAppContext } from "../../context/AppContext";
 
 function AppBar() {
   const [user, setUser] = React.useState(null);
+  const { theme, handleThemeChange } = useAppContext();
 
   return (
     <div className="GuiAppbar">
@@ -35,8 +38,11 @@ function AppBar() {
             <i className="fas fa-heart"></i>
           </Badge>
           <Badge badgeContent={5} color="secondary">
-            <i className="fa fa-baby-carriage" aria-hidden="true"></i>
+            <i className="fas fa-shopping-cart" aria-hidden="true"></i>
           </Badge>
+          <IconButton onClick={() => handleThemeChange()}>
+            <i className={`fa fa-${!theme ? "sun" : "moon"}`}></i>
+          </IconButton>
         </div>
       </div>
       <div className="GuiAppbar__searchBar--bottom">

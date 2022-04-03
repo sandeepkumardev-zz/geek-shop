@@ -66,6 +66,7 @@
     }
     h6:nth-child(2) {
       text-decoration: line-through;
+      text-decoration-color: var(--text-primary);
     }
     h6:last-child {
       font-weight: lighter;
@@ -83,8 +84,8 @@
     position: absolute;
     top: 0;
     right: 0;
-    color: red;
-    background-color: rgba(255, 255, 255, 0.486);
+    color: var(--secondary-dark);
+    background-color: var(--divider);
 
     &:hover {
       background-color: var(--secondary-highlight);

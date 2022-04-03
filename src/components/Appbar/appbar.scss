@@ -79,6 +79,11 @@
       color: var(--text-white);
     }
   }
+
+  .GuiIconButton-label i {
+    font-size: 2.2rem;
+    color: var(--text-white);
+  }
 }
 
 .GuiAppbar__menu__user {
