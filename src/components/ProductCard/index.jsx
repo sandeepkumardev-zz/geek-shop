@@ -2,28 +2,22 @@ import Button from "geeky-ui/core/Button";
 import IconButton from "geeky-ui/core/IconButton";
 import Typography from "geeky-ui/core/Typography";
 import React from "react";
+import DiscountRate from "../../utils/DiscountRate";
+import RatingStars from "../RatingStars";
 import "./productCard.scss";
 
 const ProductCard = ({ product }) => {
-  const { product_name, price, product_img, rating, rating_users, prev_price } =
-    product;
+  const {
+    product_name,
+    originalPrice,
+    price,
+    product_img,
+    rating,
+    rating_users,
+  } = product;
 
-  const [filledStar, setFilledStar] = React.useState([]);
-  const [blnakStar, setBlnakStar] = React.useState([]);
-
-  //calculate the off price
-  const [offPrice, setOffPrice] = React.useState(0);
-  React.useEffect(() => {
-    let percentOff = ((prev_price - price) * 100) / prev_price;
-    setOffPrice(Math.ceil(percentOff));
-  }, [prev_price, price]);
-
-  //calculate the filled and blank stars
-  React.useEffect(() => {
-    let ratNO = Math.floor(rating);
-    setFilledStar(Array(ratNO).fill(1));
-    setBlnakStar(Array(5 - ratNO).fill(1));
-  }, [rating]);
+  //calculate the discount rate
+  const discount = DiscountRate({ originalPrice, price });
 
   return (
     <div className="GsProductCard">
@@ -38,18 +32,13 @@ const ProductCard = ({ product }) => {
           <Typography variant="h6">{product_name}</Typography>
         </div>
         <div className="GsProductCard__rating">
-          {filledStar?.map((star, index) => (
-            <i key={index} className="fas fa-star"></i>
-          ))}
-          {blnakStar?.map((star, index) => (
-            <i key={index} className="far fa-star"></i>
-          ))}
+          <RatingStars rating={rating} />
           <Typography variant={"subtitle1"}>{rating_users}</Typography>
         </div>
         <div className="GsProductCard__price">
           <Typography variant="h6">₹{price}</Typography>
-          <Typography variant="subtitle1">₹{prev_price}</Typography>
-          <Typography variant="subtitle1">({offPrice}% off)</Typography>
+          <Typography variant="subtitle1">₹{originalPrice}</Typography>
+          <Typography variant="subtitle1">({discount}% off)</Typography>
         </div>
       </div>
       <Button
