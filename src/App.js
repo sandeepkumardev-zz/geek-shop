@@ -9,7 +9,7 @@ function App() {
 
   return (
     <>
-      <ThemeProvider theme={theme ? DarkTheme : LightTheme}>
+      <ThemeProvider theme={theme === 'light' ? LightTheme : DarkTheme}>
         <ProductPage />
       </ThemeProvider>
     </>

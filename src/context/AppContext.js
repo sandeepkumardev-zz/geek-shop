@@ -6,10 +6,10 @@ export function useAppContext() {
 }
 
 function AppCnxtProvider({ children }) {
-    const [theme, setTheme] = React.useState(false)
+    const [theme, setTheme] = React.useState('light')
 
     const handleThemeChange = () => {
-        setTheme(!theme);
+        setTheme(theme === 'light' ? 'dark' : 'light');
     };
 
     return (

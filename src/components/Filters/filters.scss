@@ -50,5 +50,9 @@ hr {
     height: 3.5rem;
     padding: 0.5rem;
     outline: none;
+    border-radius: 5px;
+    border: 1px solid var(--text-disabled);
+    color: var(--text-primary);
+    background-color: var(--theme-color);
   }
 }

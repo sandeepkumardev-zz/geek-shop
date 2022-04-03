@@ -45,8 +45,8 @@
     height: 100%;
     font-size: 2rem;
     padding: 1rem;
-    color: var(--text-black);
-    background-color: var(--text-white);
+    color: var(--text-primary);
+    background-color: var(--theme-color);
   }
 
   i {
@@ -64,7 +64,7 @@
   display: flex;
   align-items: center;
   gap: 1rem;
-  color: var(--text-white);
+  color: var(--theme-color);
   font-size: 2.4rem;
 
   .GuiBadge-root {
@@ -82,7 +82,7 @@
 
   .GuiIconButton-label i {
     font-size: 2.2rem;
-    color: var(--text-white);
+    color: var(--theme-color);
   }
 }
 
@@ -113,8 +113,8 @@
     height: 100%;
     font-size: 2rem;
     padding: 1rem;
-    color: var(--text-black);
-    background-color: var(--text-white);
+    color: var(--text-primary);
+    background-color: var(--theme-color);
   }
 
   i {

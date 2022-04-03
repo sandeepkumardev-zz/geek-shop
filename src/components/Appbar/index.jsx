@@ -35,13 +35,13 @@ function AppBar() {
           )}
 
           <Badge badgeContent={5} color="secondary">
-            <i className="fas fa-heart"></i>
+            <i className="far fa-heart"></i>
           </Badge>
           <Badge badgeContent={5} color="secondary">
-            <i className="fas fa-shopping-cart" aria-hidden="true"></i>
+            <i className="far fa-shopping-cart" aria-hidden="true"></i>
           </Badge>
           <IconButton onClick={() => handleThemeChange()}>
-            <i className={`fa fa-${!theme ? "sun" : "moon"}`}></i>
+            <i className={`fa fa-${theme === "light" ? "sun" : "moon"}`}></i>
           </IconButton>
         </div>
       </div>
