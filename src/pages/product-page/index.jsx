@@ -8,7 +8,8 @@ import AppBar from "../../components/Appbar";
 import { useAppContext } from "../../context/AppContext";
 
 function ProductPage() {
-  const { products } = useAppContext();
+  const { reducer } = useAppContext();
+  const { filteredProducts } = reducer;
 
   return (
     <>
@@ -22,14 +23,14 @@ function ProductPage() {
           <div id="GsProducts">
             <div className="GsProducts__header">
               <Typography variant="subtitle1">
-                {products?.length} results
+                {filteredProducts?.length} results
               </Typography>
 
               {/* shows featured filter and mobile-view filters  */}
               <MobieViewFilters />
             </div>
             <div className="GsProducts__productsList">
-              {products?.map((product) => (
+              {filteredProducts?.map((product) => (
                 <ProductCard product={product} key={product.id} />
               ))}
             </div>
