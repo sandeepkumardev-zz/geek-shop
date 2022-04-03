@@ -2,6 +2,8 @@
   background-color: var(--primary-light);
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
   z-index: 1;
+  position: sticky;
+  top: 0;
 }
 
 .GuiAppbar__container {
