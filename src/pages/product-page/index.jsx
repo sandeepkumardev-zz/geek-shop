@@ -5,19 +5,11 @@ import MobieViewFilters from "../../components/Filters/MobieViewFilters";
 import "./product-page.scss";
 import ProductCard from "../../components/ProductCard";
 import AppBar from "../../components/Appbar";
+import { useAppContext } from "../../context/AppContext";
 
 function ProductPage() {
-  const [products, setProducts] = React.useState(null);
+  const { products } = useAppContext();
 
-  //   console.log(products);
-
-  React.useEffect(() => {
-    fetch("./MOCK_DATA.json")
-      .then((res) => res.json())
-      .then((data) => {
-        setProducts(data);
-      });
-  }, []);
   return (
     <>
       <AppBar />
