@@ -4392,10 +4392,10 @@ functional-red-black-tree@^1.0.1:
   resolved "https://registry.yarnpkg.com/functional-red-black-tree/-/functional-red-black-tree-1.0.1.tgz#1b0ab3bd553b2a0d6399d29c0e3ea0b252078327"
   integrity sha1-GwqzvVU7Kg1jmdKcDj6gslIHgyc=
 
-geeky-ui@^0.0.28:
-  version "0.0.28"
-  resolved "https://registry.yarnpkg.com/geeky-ui/-/geeky-ui-0.0.28.tgz#0579a6b3ae521b080ac59dec7f2f4c3c25a4281d"
-  integrity sha512-7h/moHxy+zgIoobuFTfp0qycPS8btFK6g3+Gp9g3nB/cUAF/SRswsx0QMJE7sXrehVKD+pKxELZ1o0oyjsqvPw==
+geeky-ui@^0.0.30:
+  version "0.0.30"
+  resolved "https://registry.yarnpkg.com/geeky-ui/-/geeky-ui-0.0.30.tgz#f695cd8f6a85debe50427056009396d80724d53f"
+  integrity sha512-syt6ySGAXDiB9KYgLCKY/s/pOYt/DNHasESSPs/03LI5PAS/a6xkFB6QJabHxWThdbjKknqG7JxKfFVPlvFJvA==
   dependencies:
     "@babel/polyfill" "^7.12.1"
     "@testing-library/jest-dom" "^5.16.2"
