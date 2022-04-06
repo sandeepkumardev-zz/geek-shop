@@ -3,6 +3,7 @@ export const data = {
         lowToHigh: false,
         highToLow: false,
         newestArrivals: false,
+        allPrice: true,
         minPrice: null,
         maxPrice: null,
         rating: null,
