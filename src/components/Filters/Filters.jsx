@@ -9,7 +9,8 @@ function Filters() {
   const [maxPrice, setMaxPrice] = React.useState(null);
   const [inputError, setInputError] = React.useState(null);
 
-  const { dispatch, brandsName } = useAppContext();
+  const { dispatch, brandsName, reducer } = useAppContext();
+  const filters = reducer.filters;
 
   const inputPriceFilter = (e) => {
     e.preventDefault();
@@ -47,8 +48,11 @@ function Filters() {
           </Typography>
           <Button
             variant="contained"
+            {...filters.payOnDelivery && {
+              color: "primary",
+            }}
             size="small"
-            onClick={() => updateFilters({ payOnDelivery: true })}
+            onClick={() => updateFilters({ payOnDelivery: !filters.payOnDelivery })}
           >
             Eligible for Pay On Delivery
           </Button>
@@ -60,11 +64,12 @@ function Filters() {
           </Typography>
           <Button
             variant="contained"
+            {...filters.highToLow && { color: "primary" }}
             size="small"
             onClick={() =>
               updateFilters({
                 newestArrivals: false,
-                highToLow: true,
+                highToLow: !filters.highToLow,
                 lowToHigh: false,
               })
             }
@@ -73,11 +78,12 @@ function Filters() {
           </Button>
           <Button
             variant="contained"
+            {...filters.lowToHigh && { color: "primary" }}
             size="small"
             onClick={() =>
               updateFilters({
                 newestArrivals: false,
-                lowToHigh: true,
+                lowToHigh: !filters.lowToHigh,
                 highToLow: false,
               })
             }
@@ -86,10 +92,11 @@ function Filters() {
           </Button>
           <Button
             variant="contained"
+            {...filters.newestArrivals && { color: "primary" }}
             size="small"
             onClick={() =>
               updateFilters({
-                newestArrivals: true,
+                newestArrivals: !filters.newestArrivals,
                 lowToHigh: false,
                 highToLow: false,
               })
@@ -103,50 +110,65 @@ function Filters() {
           <Typography variant="subtitle1">Price</Typography>
           <Button
             variant="contained"
+            {...filters.allPrice && { color: "primary" }}
             size="small"
-            onClick={() =>
+            onClick={() =>  {
               updateFilters({ allPrice: true, minPrice: null, maxPrice: null })
-            }
+              setMaxPrice(null)
+              setMinPrice(null)
+            }}
           >
             All prices
           </Button>
           <Button
             variant="contained"
+            {...filters.maxPrice === 1000 && { color: "primary" }}
             size="small"
-            onClick={() =>
+            onClick={() => {
               updateFilters({ allPrice: false, minPrice: 0, maxPrice: 1000 })
-            }
+              setMaxPrice(null)
+              setMinPrice(null)
+            }}
           >
             Under ₹1000
           </Button>
           <Button
             variant="contained"
+            {...filters.maxPrice === 3000 && { color: "primary" }}
             size="small"
-            onClick={() =>
+            onClick={() =>  {
               updateFilters({ allPrice: false, minPrice: 1000, maxPrice: 3000 })
-            }
+              setMaxPrice(null)
+              setMinPrice(null)
+            }}
           >
             ₹1000 - ₹3000
           </Button>
           <Button
             variant="contained"
+            {...filters.maxPrice === 5000 && { color: "primary" }}
             size="small"
-            onClick={() =>
+            onClick={() =>  {
               updateFilters({ allPrice: false, minPrice: 3000, maxPrice: 5000 })
-            }
+              setMaxPrice(null)
+              setMinPrice(null)
+            }}
           >
             ₹3000 - ₹5000
           </Button>
           <Button
             variant="contained"
+            {...filters.minPrice === 5000 && { color: "primary" }}
             size="small"
-            onClick={() =>
+            onClick={() =>  {
               updateFilters({
                 allPrice: false,
                 minPrice: 5000,
                 maxPrice: null,
               })
-            }
+              setMaxPrice(null)
+              setMinPrice(null)
+            }}
           >
             Above ₹5000
           </Button>
@@ -154,12 +176,14 @@ function Filters() {
             <input
               type="text"
               placeholder="₹ Min"
+              value={minPrice === null ? "" : minPrice}
               onChange={(e) => setMinPrice(e.target.value)}
               required
             />
             <input
               type="text"
               placeholder="₹ Max"
+              value={maxPrice === null ? "" : maxPrice}
               onChange={(e) => setMaxPrice(e.target.value)}
               required
             />
@@ -178,13 +202,15 @@ function Filters() {
           <Typography variant="subtitle1">Rating</Typography>
           <Button
             variant="contained"
+            {...filters.rating === null && { color: "primary" }}
             size="small"
-            onClick={() => updateFilters({ rating: "all" })}
+            onClick={() => updateFilters({ rating: null })}
           >
             All ratings
           </Button>
           <Button
             variant="contained"
+            {...filters.rating === 4 && { color: "primary" }}
             size="small"
             onClick={() => updateFilters({ rating: 4 })}
           >
@@ -195,6 +221,7 @@ function Filters() {
           </Button>
           <Button
             variant="contained"
+            {...filters.rating === 3 && { color: "primary" }}
             size="small"
             onClick={() => updateFilters({ rating: 3 })}
           >
@@ -204,6 +231,7 @@ function Filters() {
           </Button>
           <Button
             variant="contained"
+            {...filters.rating === 2 && { color: "primary" }}
             size="small"
             onClick={() => updateFilters({ rating: 2 })}
           >
@@ -212,6 +240,7 @@ function Filters() {
           </Button>
           <Button
             variant="contained"
+            {...filters.rating === 1 && { color: "primary" }}
             size="small"
             onClick={() => updateFilters({ rating: 1 })}
           >
@@ -224,9 +253,10 @@ function Filters() {
           {[10, 20, 40, 60].map((discount) => (
             <Button
               key={discount}
+              {...filters.discount === discount && { color: "primary" }}
               variant="contained"
               size="small"
-              onClick={() => updateFilters({ discount })}
+              onClick={() => updateFilters({ discount: filters.discount === discount ? null : discount })}
             >
               {discount}% or more
             </Button>
@@ -237,14 +267,16 @@ function Filters() {
           <Typography variant="subtitle1">Brands</Typography>
           <Button
             variant="contained"
+            {...filters.brand === null && { color: "primary" }}
             size="small"
-            onClick={() => updateFilters({ brand: "all" })}
+            onClick={() => updateFilters({ brand: null })}
           >
             All brands
           </Button>
           {brandsName.map((brand) => (
             <Button
               key={brand}
+              {...filters.brand === brand && { color: "primary" }}
               variant="contained"
               size="small"
               onClick={() => updateFilters({ brand: brand })}
