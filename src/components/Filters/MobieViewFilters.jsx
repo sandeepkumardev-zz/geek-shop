@@ -1,22 +1,16 @@
-import { Button, Typography } from "geeky-ui";
+import { Button } from "geeky-ui";
 import React from "react";
 import Filters from "./Filters";
 import "./mobileViewFilters.scss";
+import SortByFeatured from "./SortByFeatured";
 
 function MobieViewFilters() {
   const [show, setShow] = React.useState(false);
+
   return (
     <>
       <div className="GsProducts__sortBy">
-        <Typography variant="subtitle1">
-          <span className="sortBy__dropdown">Sort by: Featured</span>
-        </Typography>
-        <div className="GsProducts__sortBy__options">
-          <Typography variant="subtitle1">Featured</Typography>
-          <Typography variant="subtitle1">Price: Low to High</Typography>
-          <Typography variant="subtitle1">Price: High to Low</Typography>
-          <Typography variant="subtitle1">Newest Arrivals</Typography>
-        </div>
+        <SortByFeatured />
       </div>
 
       <div className="GsMobileFilters">
